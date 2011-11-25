@@ -1,0 +1,4 @@
+# Dotfiles
+
+  * .zshrc 
+  * .tmux.conf 
