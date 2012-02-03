@@ -14,9 +14,7 @@ export EDITOR=vim
 export SVN_EDITOR=vim  
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/us/X11/bin:/usr/local/git/bin:$HOME/.rbenv/bin:$PATH
 export ZSH=$HOME/.oh-my-zsh
-#export ZSH_THEME="lrbecker"
-export ZSH_THEME="cloud"
-export DISABLE_LS_COLORS="true"
+export ZSH_THEME="fino"
 export NODE_PATH="/usr/local/lib/node"
 source $ZSH/oh-my-zsh.sh
 source $HOME/.private-zshrc
@@ -33,7 +31,8 @@ alias o="open ."
 alias reload=". ~/.zshrc"
 alias eap="sudo vim /private/etc/apache2/httpd.conf"
 alias apacherestart="sudo /usr/sbin/apachectl restart"
-alias myip="ifconfig en0 | grep "inet" | grep -v inet6 | sed 's/.*inet \([0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\).*$/\1/'"
+alias ip="ipconfig getifaddr en0"
+alias shipit="svn info | ack URL | cut -f2 -d' ' | pbcopy; cd ~/Shippable;"
 
 # RUBY ///////////
 alias be="bundle exec"
