@@ -8,6 +8,5 @@ function prompt_char {
     echo '☠'
 }
 
-PROMPT="$(virtualenv_info)$(prompt_char) %~ "
-RPROMPT="SERIOUS BUSINESS"
-
+PROMPT="%{$fg_bold[red]%} $(virtualenv_info)$(prompt_char) %{$fg_bold[yellow]%} %~ "
+RPROMPT="SERIOUS BUSINESS 24/7"
