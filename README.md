@@ -9,6 +9,7 @@ If you want to keep them in that folder remember to symbolically link them.
 ## Available .dotfiles
 
   * .zshrc 
+  * .zsh-theme
   * .tmux.conf 
   * .gitignore
   * .ctags
