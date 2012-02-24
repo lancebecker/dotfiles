@@ -69,7 +69,10 @@ alias ll='ls -l'
 alias mv='nocorrect mv'       # no spelling correction on mv
 alias cp='nocorrect cp'       # no spelling correction on cp
 alias mkdir='nocorrect mkdir' # no spelling correction on mkdir
+alias rm="nocorrect rm"
 alias o="open ."
+
+safari() {  open -a Safari "$@"  }
 
 
 # WORKFLOW //////////
@@ -82,8 +85,9 @@ alias ip="ipconfig getifaddr en0"
 alias shipit="svn info | ack URL | cut -f2 -d' ' | pbcopy; cd ~/Shippable;"
 
 # SVN ////////////
-#
-alias sl="svn log | sed -n '/lance.becker/,/----$/ p' "
+
+sl() { svn log -l $@ } # sl 4 -> log out 4 messages
+alias sml="svn log | sed -n '/lance.becker/,/----$/ p' "
 alias lc="svn log -l 1"
 
 # GIT ////////////
