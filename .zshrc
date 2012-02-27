@@ -46,7 +46,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 # Exports                                                                   -
 # ---------------------------------------------------------------------------
 
-export EDITOR=vim
+export EDITOR="mvim -f"
 export SVN_EDITOR=vim  
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/us/X11/bin:/usr/local/git/bin:$HOME/.rbenv/bin:$PATH:$HOME/.scripts
 export NODE_PATH="/usr/local/lib/node"
