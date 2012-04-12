@@ -14,6 +14,17 @@ then
   ls --color -d . &>/dev/null 2>&1 && alias ls='ls --color=tty' || alias ls='ls -G'
 fi
 
+function title {
+  [ "$DISABLE_AUTO_TITLE" != "true" ] || return
+  if [[ "$TERM" == screen* ]]; then
+    print -Pn "\ek$1:q\e\\" #set screen hardstatus, usually truncated at 20 chars
+  elif [[ "$TERM" == xterm* ]] || [[ $TERM == rxvt* ]] || [[ "$TERM_PROGRAM" == "iTerm.app" ]]; then
+    print -Pn "\e]2;$2:q\a" #set window name
+    print -Pn "\e]1;$1:q\a" #set icon (=tab) name (will override window name on broken terminal)
+  fi
+}
+
+
 # Setup the prompt with pretty colors
 setopt prompt_subst
 
@@ -23,7 +34,14 @@ compinit
 
 # ls colors
 autoload colors; colors;
-export LSCOLORS="Gxfxcxdxbxegedabagacad"
+
+# Enable ls colors
+if [ "$DISABLE_LS_COLORS" != "true" ]
+then
+  # Find the option for using colors in ls, depending on the version: Linux or BSD
+  ls --color -d . &>/dev/null 2>&1 && alias ls='ls --color=tty' || alias ls='ls -G'
+fi
+
 PS1="%n@%m:%~%# "
 
 zstyle ':completion:*' auto-description 'specify: %d'
@@ -72,30 +90,32 @@ alias mkdir='nocorrect mkdir' # no spelling correction on mkdir
 alias rm="nocorrect rm"
 alias o="open ."
 
-safari() {  open -a Safari "$@"  }
-
+# WORKFLOW //////////
+#
+alias eap="sudo vim /private/etc/apache2/httpd.conf"
+alias apat="sudo /usr/sbin/apachectl restart"
+alias ip="ipconfig getifaddr en0"
+alias shipit="svn info | ack URL | cut -f2 -d' ' | pbcopy; cd ~/Shippable;"
+alias android="cd /usr/local/bin/android-sdk-macosx/tools/; ./android"
 
 # WORKFLOW //////////
 #
-alias yuicompress="echo \"Changing to YUICompressor directory\"; cd ~/Tools/YUICompressor/build; echo \"Usage: java -jar yuicompressor-x.y.z.jar [input file] -o [output file]\""
-alias reload=". ~/.zshrc"
-alias eap="sudo vim /private/etc/apache2/httpd.conf"
-alias apacherestart="sudo /usr/sbin/apachectl restart"
-alias ip="ipconfig getifaddr en0"
-alias shipit="svn info | ack URL | cut -f2 -d' ' | pbcopy; cd ~/Shippable;"
+alias love="/Applications/love.app/Contents/MacOS/love"
+alias zlove="zip -r ../${PWD##*/}.love *"
 
 # SVN ////////////
 
 sl() { svn log -l $@ } # sl 4 -> log out 4 messages
 alias sml="svn log | sed -n '/lance.becker/,/----$/ p' "
 alias lc="svn log -l 1"
+alias snv="svn"
 
 # GIT ////////////
 #
 alias g='git'    
 alias gs='git status'
 alias gl='git log'
-alias ga='git add .'
+alias ga='git add'
 alias gc='git commit'
 alias gca='git commit -a'
 alias gco='git checkout'
