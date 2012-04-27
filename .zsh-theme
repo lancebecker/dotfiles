@@ -9,4 +9,4 @@ function prompt_char {
 }
 
 PROMPT="%{$fg_bold[red]%} $(virtualenv_info)$(prompt_char) %{$fg_bold[yellow]%} %~ "
-RPROMPT="SERIOUS BUSINESS 24/7"
+RPROMPT=""

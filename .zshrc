@@ -103,12 +103,18 @@ alias android="cd /usr/local/bin/android-sdk-macosx/tools/; ./android"
 alias love="/Applications/love.app/Contents/MacOS/love"
 alias zlove="zip -r ../${PWD##*/}.love *"
 
+# FUNCTION ////////////
+sl() { svn log -l $@ } # sl 4 -> log out 4 messages
+m() { middleman -p $@ }
+
+alias fm="ps aux | grep middleman"
+
 # SVN ////////////
 
-sl() { svn log -l $@ } # sl 4 -> log out 4 messages
 alias sml="svn log | sed -n '/lance.becker/,/----$/ p' "
 alias lc="svn log -l 1"
 alias snv="svn"
+
 
 # GIT ////////////
 #
@@ -125,6 +131,8 @@ alias gbn='git checkout -b'
 alias gd='clear && git diff'
 alias gdm='git diff | mvim -'       
 alias gll='git log --graph --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset"'
+alias gpud="git pull origin development"
+alias gpd="git push origin development"
 
 # ---------------------------------------------------------------------------
 # RBENV 
