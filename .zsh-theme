@@ -10,3 +10,4 @@ function prompt_char {
 
 PROMPT="%{$fg_bold[red]%} $(virtualenv_info)$(prompt_char) %{$fg_bold[yellow]%} %~ "
 RPROMPT=""
+SPROMPT='zsh: correct '%R' to '%r'? ([Y]es/[N]o/[E]dit/[A]bort) '
