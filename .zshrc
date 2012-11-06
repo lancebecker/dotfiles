@@ -18,7 +18,6 @@
     setopt inc_append_history # Append commands to history immediately
     setopt prompt_subst # Enable variable substitution in prompt
     setopt correct # Command correction
-    setopt dvorak # Correkt dvorak typing mistakes
     setopt short_loops # Allow short loops
 
 # }}}
@@ -96,8 +95,7 @@ zstyle ':completion:*:mv:*' ignore-line yes
 
     export EDITOR="mvim -f"
     export SVN_EDITOR=vim
-    export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/us/X11/bin:/usr/local/git/bin:$HOME/.rbenv/bin:$PATH:$HOME/.scripts
-    export NODE_PATH="/usr/local/lib/node"
+    export PATH=/usr/bin:/usr/local/bin:/usr/local/git/bin:$HOME/.rbenv/bin:$PATH:$HOME/.scripts
     source $HOME/.zshrc.private
     source $HOME/.dotfiles/.zsh-theme
 
@@ -117,20 +115,13 @@ zstyle ':completion:*:mv:*' ignore-line yes
     alias mkdir='nocorrect mkdir' # no spelling correction on mkdir
     alias rm="nocorrect rm"
     alias o="open ."
-    alias lol="cd ~/.lolcommits; open ."
 
     alias eap="sudo vim /private/etc/apache2/httpd.conf"
     alias apat="sudo /usr/sbin/apachectl restart"
     alias ip="ipconfig getifaddr en0"
-    alias shipit="svn info | ack URL | cut -f2 -d' ' | pbcopy; cd ~/Shippable;"
     alias android="cd /usr/local/bin/android-sdk-macosx/tools/; ./android"
 
-    sl() { svn log -l $@ } # sl 4 -> log out 4 messages
-    m() { middleman server -p $@ }
-
-    alias sml="svn log | sed -n '/lance.becker/,/----$/ p' "
-    alias lc="svn log -l 1"
-    alias snv="svn"
+    alias bb="bundle exec middleman build"
 
     alias gti="git"
     alias g='git'

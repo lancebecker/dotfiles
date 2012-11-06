@@ -5,7 +5,7 @@ function virtualenv_info {
 function prompt_char {
     git branch >/dev/null 2>/dev/null && echo '±' && return
     hg root >/dev/null 2>/dev/null && echo '☿' && return
-    echo '☠'
+    echo '❂'
 }
 
 PROMPT="%{$fg_bold[red]%} $(virtualenv_info)$(prompt_char) %{$fg_bold[yellow]%} %~ "
